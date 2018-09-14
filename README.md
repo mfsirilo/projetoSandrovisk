@@ -19,5 +19,4 @@ Em desenvolvimento
 
 * Inicialização do Projeto
 * Navbar e Footer customizados
-* etc
 
