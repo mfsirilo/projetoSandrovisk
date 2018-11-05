@@ -1,6 +1,6 @@
 <footer class="footer bg-dark text-white">
-    <div class="container">
-        <span class="">Digitar algo aqui pra fazer volume</span>
+    <div class="">
+        <span style="margin-left:5%;">Digitar algo aqui pra fazer volume</span>
     </div>
 </footer>
 
