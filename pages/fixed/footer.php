@@ -1,4 +1,4 @@
-<footer class="footer bg-dark text-white">
+<footer class="footer bg-dark text-warning">
     <div class="">
         <span style="margin-left:5%;">Digitar algo aqui pra fazer volume</span>
     </div>

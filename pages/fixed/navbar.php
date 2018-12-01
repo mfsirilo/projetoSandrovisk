@@ -1,7 +1,5 @@
-<?php session_start(); ?>
-
 <header>
-	<nav class="navbar navbar-dark bg-dark navbar-expand-lg ">
+	<nav class="navbar navbar-dark bg-dark navbar-expand-md">
 		<a class="navbar-brand text-warning" href="#" style="margin-left:5%;">Sistema Bibliotecário</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -20,7 +18,7 @@
 					if(isset($_SESSION['nome'])) {
 						echo "<a class='nav-link text-warning' href='#'><b>Olá</b>".$_SESSION['nome']."</a>";
 					} else {
-						echo "<a class='nav-link text-warning' href='../login.php'>Login</a>";
+						echo "<a class='nav-link text-warning' href='./pages/login.php'>Login</a>";
 					}
 				?>
 			</span>
