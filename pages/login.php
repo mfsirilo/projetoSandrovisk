@@ -41,7 +41,7 @@
         <?php
             if(isset($_POST['email'])) {
                 include("./fixed/conexao.php");
-                $sql = "select * from usuario where email=".$_POST['email']." and senha=".$_POST['senha']." limit 1";
+                $sql = "select * from usuario where email='".$_POST['email']."' and senha='".$_POST['senha']."' limit 1";
                 $result = mysqli_query($con, $sql);
                 if(mysqli_num_rows($result) > 0) {
                     session_start();

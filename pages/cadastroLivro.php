@@ -60,7 +60,7 @@
 									$ano = $_POST['ano'];
 									$desc = $_POST['descricao'];
 						
-									$sql = "insert into livro values(default,'$nome','$categoria','$qtd','$autor','$editora','$edicao','$ano','$qtd','$desc',default)";
+									$sql = "insert into livro values(default,'$nome','$categoria','$qtd','$autor','$editora','$edicao','$ano','$qtd','$desc')";
 									mysqli_query($con, $sql);
 									echo ("<script>alert('Livro cadastrado');</script>");
 								}
@@ -232,8 +232,7 @@
 							$result = mysqli_query($con, $sql);
 							if(mysqli_num_rows($result) > 0) {
 								while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)) {
-									if($row['status'] == 1) {
-										echo ("
+									echo ("
 										<tr>
 											<th scope='row'>".$row['idlivro']."</th>
 											<th scope='row'>".$row['nome']."</th>
@@ -244,7 +243,6 @@
 											<th scope='row'><a class='btn btn-danger' href='removerLivro.php?id=".$row['idlivro']."'><b>Excluir</b></a></th>
 										</tr>
 										");
-									}
 								}
 							}
 						?>
