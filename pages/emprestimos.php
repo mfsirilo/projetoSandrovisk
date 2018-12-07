@@ -34,19 +34,17 @@
 							<select class="custom-select">
 								<option selected>Selecione um Cliente</option>
 								<?php
-									$sql = "select * from cliente where status = 1";
+									include("./fixed/conexao.php");
+									$sql = "select * from usuario where status = 1";
 									$result = mysqli_query($con, $sql);
 									if(mysqli_num_rows($result) > 0) {
 										while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)) {
 											echo ("
-											<option value='".$row['idlivro']."'><b>Livro:</b> ".$row['nome']."</option>
+											<option value='".$row['idcliente']."'><b>Cliente:</b> ".$row['nome']."</option>
 											");
 										}
 									}
 								?>
-								<option value="1">One</option>
-								<option value="2">Two</option>
-								<option value="3">Three</option>
 							</select>
 						</div>
 						<div class="form-group">
@@ -64,9 +62,6 @@
 										}
 									}
 								?>
-								<option value="1">One</option>
-								<option value="2">Two</option>
-								<option value="3">Three</option>
 							</select>
 						</div>
 						<div class="col text-center">
@@ -75,19 +70,19 @@
 						<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
-										<div class="modal-header bg-warning text-dark">
-											<h5 class="modal-title" id="exampleModalLabel">Confirmação de Pagamento</h5>
-											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-												<span aria-hidden="true">&times;</span>
-											</button>
-										</div>
-										<div class="modal-body">
-											...
-										</div>
-										<div class="modal-footer">
-											<a href="" class="btn btn-secondary text-light" data-dismiss="modal"><b>Cancelar</b></a>
-											<a href="" class="btn btn-danger text-dark"><b>Confirmar</b></a>
-										</div>
+									<div class="modal-header bg-warning text-dark">
+										<h5 class="modal-title" id="exampleModalLabel">Confirmação de Pagamento</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										...
+									</div>
+									<div class="modal-footer">
+										<a href="" class="btn btn-secondary text-light" data-dismiss="modal"><b>Cancelar</b></a>
+										<a href="" class="btn btn-danger text-dark"><b>Confirmar</b></a>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -104,18 +99,37 @@
 					<thead>
 						<tr>
 							<th scope="col">Código</th>
-							<th scope="col">Nome</th>
-							<th scope="col">Autor</th>
-							<th scope="col">Quantidade</th>
+							<th scope="col">Cliente</th>
+							<th scope="col">Livro</th>
+							<th scope="col">Data do Emprestimo</th>
+							<th scope="col">Data da Entrega</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
+						<?php
+							$sql = "select idemprestimo, data_emprestimo, data_prevista, livro.nome, usuario.nome from ((emprestimo inner join livro on livro_idlivro = livro.idlivro) inner join usuario on usuario_idusuario = usuario.idusuario)";
+							$result = mysqli_query($con, $sql);
+							if(mysqli_num_rows($result) > 0) {
+								while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)) {
+									echo ("
+									<tr>
+										<th scope='row'>".$row['idemprestimos']."</th>
+										<td>".$row['usuario.nome']."</td>
+										<td>".$row['livro.nome']."</td>
+										<td>".$row['data_emprestimo']."</td>
+										<td>".$row['data_prevista']."</td>
+									</tr>
+									");
+								}
+							}
+						?>
+						<!-- <tr>
 							<th scope="row">1</th>
 							<td>Mark</td>
 							<td>Otto</td>
 							<td>Otto</td>
-						</tr>
+							<td>Otto</td>
+						</tr> -->
 					</tbody>
 				</table>
 			</div>

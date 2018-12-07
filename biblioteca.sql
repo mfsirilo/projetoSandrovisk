@@ -55,6 +55,7 @@ ENGINE = InnoDB;
 -- Table `sysbiblioteca`.`emprestimo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sysbiblioteca`.`emprestimo` (
+	
 	`usuario_idusuario` INT NOT NULL,
 	`livro_idlivro` INT NOT NULL,
 	`data_emprestimo` DATE NOT NULL,

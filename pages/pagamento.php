@@ -42,12 +42,12 @@
 							<select class="custom-select" onchange="schedule(this.value)">
 								<option selected>Selecione um Cliente</option>
 								<?php
-									$sql = "select emprestimo.idEmprestimo, emprestimo.data_prevista, emprestimo.data_devolucao, livro.nome, usuario.nome from ((emprestimo inner join usuario on emprestimo.livro_idlivro = livro.idlivro) inner join usuario on emprestimo.usuario_idusuario = usuario.idusuario";
+									$sql = "select emprestimo.idemprestimo, emprestimo.data_prevista, emprestimo.data_devolucao, livro.nome, usuario.nome from ((emprestimo inner join usuario on emprestimo.livro_idlivro = livro.idlivro) inner join usuario on emprestimo.usuario_idusuario = usuario.idusuario";
 									$result = mysqli_query($con, $sql);
 									if(mysqli_num_rows($result) > 0) {
 										while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)) {
 											echo ("
-											<option value='".$row['idEmprestimo']."'><b>Cliente:</b> ".$row['usuario.nome']." <b>Livro:</b> ".$row['livro.nome']."</option>
+											<option value='".$row['idemprestimo']."'><b>Cliente:</b> ".$row['usuario.nome']." <b>Livro:</b> ".$row['livro.nome']."</option>
 											");
 										}
 									}
@@ -92,15 +92,15 @@
 				<table class="table table-hover text-center">
 					<thead>
 						<tr>
-						<th scope="col">Código</th>
-						<th scope="col">Usuário</th>
-						<th scope="col">Livro</th>
-						<th scope="col">Data do Emprestimo</th>
-						<th scope="col">Data Prevista</th>
-						<th scope="col">Data de Devolução</th>
-						<th scope="col">Valor da Multa</th>
-						<th scope="col">Confirmação de Pagamento</th>
-						<th scope="col">Excluir</th>
+							<th scope="col">Código</th>
+							<th scope="col">Usuário</th>
+							<th scope="col">Livro</th>
+							<th scope="col">Data do Emprestimo</th>
+							<th scope="col">Data Prevista</th>
+							<th scope="col">Data de Devolução</th>
+							<th scope="col">Valor da Multa</th>
+							<th scope="col">Confirmação de Pagamento</th>
+							<th scope="col">Excluir</th>
 						</tr>
 					</thead>
 					<tbody>

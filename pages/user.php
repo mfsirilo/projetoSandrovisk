@@ -36,7 +36,6 @@
 								<small class="text-muted"><a href="" class="btn bg-dark"><b class="text-warning">Acessar</b></a></small>
 							</div>
 						</div>
-						
 					</div>
 				</div>
 			</div>

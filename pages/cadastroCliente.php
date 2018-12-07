@@ -44,7 +44,6 @@
 					
 								$sql = "update usuario set nome='$nome', email='$email', senha='$senha', endereco='$endereco', telefone='$telefone' where idusuario=$id";
 								mysqli_query($con, $sql);
-								echo ("<script>alert('Usuário alterado');</script>");
 							} else {
 								$nome = $_POST['nome'];
 								$email = $_POST['email'];
@@ -54,7 +53,6 @@
 					
 								$sql = "insert into usuario values(default,'$nome','$email','$senha','NMR','$endereco','$telefone','1')";
 								mysqli_query($con, $sql);
-								echo ("<script>alert('Usuário cadastrado');</script>");
 							}
 						}
 				
@@ -184,7 +182,6 @@
 						<th scope="col">Código</th>
 						<th scope="col">Nome</th>
 						<th scope="col">E-mail</th>
-						<th scope="col">Status</th>
 						<th scope="col">Editar</th>
 						<th scope="col">Excluir</th>
 						</tr>
@@ -201,7 +198,6 @@
 											<th scope='row'>".$row['idusuario']."</th>
 											<th scope='row'>".$row['nome']."</th>
 											<th scope='row'>".$row['email']."</th>
-											<th scope='row'>0</th>
 											<th scope='row'><a class='btn btn-warning' href='cadastroCliente.php?id=".$row['idusuario']."'><b>Editar</b></a></th>
 											<th scope='row'><a class='btn btn-danger' href='removerCliente.php?id=".$row['idusuario']."'><b>Excluir</b></a></th>
 										</tr>

@@ -25,7 +25,7 @@
 			</div>
 			<div class="row" id="main">
 				<div class="row" style="width: 100% !important;">
-					<form action="" method="post" class='row' style="width: 100% !important;">
+					<form action="buscarLivro.php" method="post" class='row' style="width: 100% !important;">
 						<div class="col-lg-1 col-sm-12 col-md-4">
 							<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 								<a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Nome</a>
@@ -39,40 +39,45 @@
 								<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
 									<div class="row">
 										<div class="col-10">
-											<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite o nome do Livro">
+											<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Digite o nome do Livro" name="livro">
+											<input type="hidden" name="type" value="1">
 										</div>
 										<div class="col-2">
-											<a href="" class="btn btn-warning"><b>Buscar</b></a>
+											<!-- <a href=""  class="btn btn-warning"></a> -->
+											<button type="submit" class="btn btn-warning"><b>Buscar</b></button>
 										</div>
 									</div>
 								</div>
 								<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
 									<div class="row">
 										<div class="col-10">
-											<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite o nome do Autor">
+											<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Digite o nome do Autor" name="autor">
+											<input type="hidden" name="type" value="2">
 										</div>
 										<div class="col-2">
-											<a href="" class="btn btn-warning"><b>Buscar</b></a>
+											<button type="submit" class="btn btn-warning"><b>Buscar</b></button>
 										</div>
 									</div>
 								</div>
 								<div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
 									<div class="row">
 										<div class="col-10">
-											<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite a edição do Livro">
+											<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Digite a edição do Livro" name="edicao">
+											<input type="hidden" name="type" value="3">
 										</div>
 										<div class="col-2">
-											<a href="" class="btn btn-warning"><b>Buscar</b></a>
+											<button type="submit" class="btn btn-warning"><b>Buscar</b></button>
 										</div>
 									</div>
 								</div>
 								<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
 									<div class="row">
 										<div class="col-10">
-											<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite o ano do Livro">
+											<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Digite o ano do Livro" name="ano">
+											<input type="hidden" name="type" value="4">
 										</div>
 										<div class="col-2">
-											<a href="" class="btn btn-warning"><b>Buscar</b></a>
+											<button type="submit" class="btn btn-warning"><b>Buscar</b></button>
 										</div>
 									</div>
 								</div>
@@ -98,6 +103,30 @@
 						<tbody>
 							<?php
 								$sql = "select * from livro";
+								if(isset($_POST['type'])) {
+									if($_POST['type'] == 1) {
+										$sql = "select * from livro where nome like "+$_POST['livro'];
+									} else if ($_POST['type'] == 2) {
+										$sql = "select * from livro where autor like "+$_POST['livro'];
+									} else if ($_POST['type'] == 3) {
+										$sql = "select * from livro where edicao ="+$_POST['edicao'];
+									} else if ($_POST['type'] == 4) {
+										$sql = "select * from livro where ano ="+$_POST['ano'];
+									} else {
+										$sql = "select * from livro";
+									}
+								}
+								// if(isset($_POST['livro'])) {
+								// 	$sql = "select * from livro where nome like "+$_POST['livro'];
+								// } else if(isset($_POST['autor'])) {
+								// 	$sql = "select * from livro where autor like "+$_POST['livro'];
+								// } else if(isset($_POST['edicao'])) {
+								// 	$sql = "select * from livro where edicao ="+$_POST['edicao'];
+								// } else if(isset($_POST['ano'])) {
+								// 	$sql = "select * from livro where ano ="+$_POST['edicao'];
+								// } else {
+								// 	$sql = "select * from livro";
+								// }
 								$result = mysqli_query($con, $sql);
 								if(mysqli_num_rows($result) > 0) {
 									while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)) {
