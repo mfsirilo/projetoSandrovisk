@@ -116,34 +116,21 @@
 										$sql = "select * from livro";
 									}
 								}
-								// if(isset($_POST['livro'])) {
-								// 	$sql = "select * from livro where nome like "+$_POST['livro'];
-								// } else if(isset($_POST['autor'])) {
-								// 	$sql = "select * from livro where autor like "+$_POST['livro'];
-								// } else if(isset($_POST['edicao'])) {
-								// 	$sql = "select * from livro where edicao ="+$_POST['edicao'];
-								// } else if(isset($_POST['ano'])) {
-								// 	$sql = "select * from livro where ano ="+$_POST['edicao'];
-								// } else {
-								// 	$sql = "select * from livro";
-								// }
 								$result = mysqli_query($con, $sql);
 								if(mysqli_num_rows($result) > 0) {
 									while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)) {
-										if($row['status'] == 1) {
-											echo ("
-											<tr>
-												<th scope='row'>".$row['idlivro']."</th>
-												<th scope='row'>".$row['nome']."</th>
-												<th scope='row'>".$row['categoria']."</th>
-												<th scope='row'>".$row['autor']."</th>
-												<th scope='row'>".$row['quantidade']."</th>
-												<th scope='row'>".$row['ano']."</th>
-												<th scope='row'>".$row['edicao']."</th>
-												<th scope='row'><a class='btn btn-warning' href='buscaLivro.php?id=".$row['idlivro']."'><b>Informações</b></a></th>
-											</tr>
-											");
-										}
+										echo ("
+										<tr>
+											<th scope='row'>".$row['idlivro']."</th>
+											<th scope='row'>".$row['nome']."</th>
+											<th scope='row'>".$row['categoria']."</th>
+											<th scope='row'>".$row['autor']."</th>
+											<th scope='row'>".$row['quantidade']."</th>
+											<th scope='row'>".$row['ano']."</th>
+											<th scope='row'>".$row['edicao']."</th>
+											<th scope='row'><a class='btn btn-warning' href='buscaLivro.php?id=".$row['idlivro']."'><b>Informações</b></a></th>
+										</tr>
+										");
 									}
 								}
 							?>

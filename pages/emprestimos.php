@@ -13,11 +13,11 @@
 		<?php
 			include("./fixed/conexao.php");
 			if(isset($_POST['usuario'])) {
-				$dataAtual = date("d-m-Y");
-				$dataEntrega = date('d-m-Y', strtotime('+7 days'));
+				$dataAtual = date("Y-m-d");
+				$dataEntrega = date("Y-m-d", strtotime('+7 days'));
 				$idUsuario = $_POST['usuario'];
 				$idLivro = $_POST['livro'];
-				$sql="insert into emprestimo (usuario_idusuario, livro_idlivro, data_emprestimo, data_prevista, data_devolucao, revalidade) values ($idUsuario, $idLivro, $dataAtual, $dataEntrega, default, 0)";
+				$sql="insert into emprestimo (usuario_idusuario, livro_idlivro, data_emprestimo, data_prevista, data_devolucao, revalidade) values ($idUsuario, $idLivro, CURDATE(), DATE_ADD(CURDATE(),INTERVAL 7 DAY), default, 0);";
 				mysqli_query($con, $sql);
 				echo $sql;
 			}
@@ -120,7 +120,7 @@
 								while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)) {
 									echo ("
 									<tr>
-										<th scope='row'>".$row['idemprestimos']."</th>
+										<th scope='row'>".$row['idemprestimo']."</th>
 										<td>".$row['usuario.nome']."</td>
 										<td>".$row['livro.nome']."</td>
 										<td>".$row['data_emprestimo']."</td>
